@@ -1,0 +1,1 @@
+SELECT product_name, price FROM products order by  price  desc offset 1  rows fetch next 1 rows only ;
