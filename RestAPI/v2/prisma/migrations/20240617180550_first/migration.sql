@@ -1,0 +1,28 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[Events] (
+    [id] INT NOT NULL IDENTITY(1,1),
+    [imageUrl] NVARCHAR(1000) NOT NULL,
+    [title] NVARCHAR(1000) NOT NULL,
+    [price] INT NOT NULL,
+    [date] DATETIME2 NOT NULL,
+    [location] NVARCHAR(1000) NOT NULL,
+    [company] NVARCHAR(1000) NOT NULL,
+    CONSTRAINT [Events_pkey] PRIMARY KEY CLUSTERED ([id])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH
