@@ -6,6 +6,9 @@ export const valid_schema = {
     isLength: {
         options : {max: 1000},
         errorMessage: "Url should not be that long"
+    },
+    isURL: {
+      errorMessage: "Should be a URL or a link"
     }
   },
   title: {
