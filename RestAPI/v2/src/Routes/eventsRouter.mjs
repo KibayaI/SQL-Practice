@@ -21,6 +21,6 @@ route
   .route("/events/:id")
   .get(exists, eventsController.getOne)
   .put(exists, checkSchema(valid_schema), eventsController.updateEvent)
-  .delete(eventsController.removeEvent);
+  .delete(exists, eventsController.removeEvent);
 
 export default route;
