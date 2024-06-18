@@ -13,28 +13,28 @@ async function addEvent(req, res) {
     res.send(errors);
   } else {
     const body_data = matchedData(req);
-  body_data.date = new Date(body_data.date);
+    body_data.date = new Date(body_data.date);
 
-  const created = await prisma.Events.create({
-    data: {
-      ...body_data
-    }
-  });
-  res.send(created);
+    const created = await prisma.Events.create({
+      data: {
+        ...body_data,
+      },
+    });
+    res.send(created);
   }
 }
 
 async function getOne(req, res) {
-   const {
-     params: { id },
-   } = req;
+  const {
+    params: { id },
+  } = req;
 
-   const user = await prisma.events.findUnique({
-     where: {
-       id: Number(id),
-     },
-   });
-   res.send(user);
+  const user = await prisma.events.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+  res.send(user);
 }
 
 async function updateEvent(req, res) {
